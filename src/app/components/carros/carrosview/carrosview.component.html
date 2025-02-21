@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row" id="top">
+    <div class="col-md-3 justify-content-center">
+      @if(carro.imagem){
+      <img src="{{carro.imagem}}" class="img-thumbnail" />
+      }@else{
+      nenhuma imagem cadastrada para este anúncio
+      }
+    </div>
+    <div class="col-md-6 text-center">
+      <h2> {{carro.veiculosmarca.marca}} {{carro.modelo}} </h2> <br>
+
+      <h4>Detalhes do Veiculo:</h4>
+
+      <h6>Ano: {{carro.ano}}</h6>
+      <h6>Cor: {{carro.cor}}</h6>
+      <h6>Tipo de Combustivel: {{carro.combustivel}}</h6>
+      <h6>Quilometragem: {{carro.km}}</h6>
+    </div>
+    <div class="col-md-3 d-flex justify-content-center" id="vendas">
+      <div class="col">
+        <h3 class="text-center"> R$ {{carro.valorcarro}},00 </h3>
+        <form (ngSubmit)="enviarProposta()">
+          <mdb-form-control>
+            <input mdbInput type="text" id="nomeCliente" [(ngModel)]="proposta.nomeCliente" name="nomeCliente" class="form-control" />
+            <label mdbLabel class="form-label" for="nomeCliente">Nome</label>
+          </mdb-form-control>
+          <br>
+          <mdb-form-control>
+            <input mdbInput type="text" id="telefoneCliente" [(ngModel)]="proposta.telefoneCliente" name="telefoneCliente" class="form-control" />
+            <label mdbLabel class="form-label" for="telefoneCliente">Telefone</label>
+          </mdb-form-control>
+          <br>
+          <mdb-form-control>
+            <input mdbInput type="email" id="emailCliente" [(ngModel)]="proposta.emailCliente" name="emailCliente" class="form-control" />
+            <label mdbLabel class="form-label" for="emailCliente">Email</label>
+          </mdb-form-control>
+          <br>
+          <mdb-form-control>
+            <input mdbInput type="number" id="valorProposta" [(ngModel)]="proposta.valorProposta" name="valorProposta" class="form-control" />
+            <label mdbLabel class="form-label" for="valorProposta">Proposta</label>
+          </mdb-form-control>
+          <br>
+          <!-- Adicione um evento de clique ao botão -->
+          <button type="button" class="btn btn-primary" (click)="enviarProposta()" style="background-color: #EC1B2A; box-shadow: none;">
+            Enviar Proposta
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="acessorio">
+    <h4> // Lista de Acessorios:</h4>
+    @for (acessorios of carro.acessorios; track $index) {
+    <h6>- {{acessorios.nome}}</h6>
+    }
+  </div>
+</div>

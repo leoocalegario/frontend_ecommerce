@@ -1,0 +1,75 @@
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h3>Auditoria</h3>
+                    <div class="direita">
+
+                        <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="new()">
+                            Novo
+                        </button>
+                    </div>
+                    <br>
+                    <table border="1" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Modelo</th>
+                                <th>Método</th>
+                                <th>Email</th>
+                                <th>Horário</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (carro of lista; track $index) {
+                            <tr>
+                                <td>{{ carro.idAnuncio }}</td>
+                                <td>{{ carro.modelo }}</td>
+                                <td>{{ carro.metodo }}</td>
+                                <td>{{ carro.email }}</td>
+                                <td>{{ carro.timestamp }}</td>
+                                }@else{
+                                <td> --- </td>
+                                }
+                                <td>{{carro.cor}}</td>
+                                <td>{{carro.ano}}</td>
+                                <td>{{carro.valorcarro}}</td>
+                                <td>{{carro.km}}</td>
+                                <td>{{carro.combustivel}}</td>
+                                <td class="direita justify-content-center">
+                                    <button type="button" class="btn btn-primary btn-rounded" mdbRipple
+                                        (click)="edit(carro)">
+                                        Editar
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-rounded" mdbRipple
+                                        (click)="deleteById(carro)">
+                                        Deletar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #modalCarroDetalhe>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body">
+
+        <app-carrosdetails [carro]="carroEdit" (retorno)="retornoDetalhe($event)"></app-carrosdetails>
+
+    </div>
+
+</ng-template>

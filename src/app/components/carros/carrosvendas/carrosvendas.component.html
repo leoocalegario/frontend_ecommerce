@@ -1,0 +1,21 @@
+        <div class="row justify-content-center">
+        @for(carro of lista; track $index){
+        <div routerLink="/carros/view/{{carro.idAnuncio}}" class="card--">
+          <div class="bg-image hover-overlay " mdbRipple rippleColor="light">
+
+            <!-- Adicionar carrossel dentro do card -->
+            @if(carro.imagem){
+              <img [src]="carro.imagem" class="card-img-top" alt="Skyscrapers"/>
+            }@else{
+              não há imagem
+            }
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{carro.modelo}}</h5>
+            <p class="card-text">Ano de fabricação: {{carro.ano}} <br>Pintura: {{carro.cor}} </p>
+            
+          </div>
+        </div>
+    }
+</div>

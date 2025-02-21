@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card {
+    flex: 1;
+    margin: 26px;
+    padding: 30px;
+}
+
+.card.mt-4 {
+    margin-top: 0;
+}

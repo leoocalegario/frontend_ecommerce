@@ -1,0 +1,61 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="assets/img/logo.png" alt="logo" style="width: 50px" />
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @if(loginService.getToken() != null ){
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="admin/carros">Veiculos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/marcas">Marcas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/acessorios">Acessórios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/propostas">Propostas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="contato">Contato</a>
+        </li>
+
+        }
+
+        <li class="nav-item">
+          <a class="nav-link active" href="vendas">Anuncios</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="contato">Contato</a>
+        </li>
+        
+
+
+
+        <div class="d-flex align-items-center"></div>
+      </ul>
+      @if(loginService.getToken() == null ){
+      <button type="button" class="btn btn-primary" style="background-color: #ec1b2a; box-shadow: none"
+        routerLink="/login">
+        Login
+      </button>
+      }@else {
+      <button type="button" class="btn btn-primary" style="background-color: #1b4cec; box-shadow: none"
+        (click)="loginService.removerToken(); reload()">
+        Logout
+      </button>
+      }
+    </div>
+  </div>
+</nav>
