@@ -24,7 +24,7 @@ export class MarcaService {
   }
 
   save(marca: Marca): Observable<string>{
-    return this.http.post<string>(this.API+"/save", marca, {responseType: 'text' as 'json'});
+    return this.http.post<string>(this.API+"/save", { marca: marca.marca }, {responseType: 'text' as 'json'});
   }
 
   update(marca: Marca, id: number): Observable<string>{

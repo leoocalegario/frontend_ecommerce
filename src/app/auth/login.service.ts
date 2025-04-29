@@ -42,9 +42,9 @@ export class LoginService {
     return "";
   }
 
-  hasPermission(flag_User: number) {
-    let user = this.jwtDecode() as Usuario;
-    if (user.flagTipoUser == flag_User)
+  hasPermission(requiredRole: string) {
+    let user = this.jwtDecode() as any;
+    if (user && user.role === requiredRole)
       return true;
     else
       return false;

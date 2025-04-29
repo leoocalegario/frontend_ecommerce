@@ -1,8 +1,6 @@
-
 export class Usuario {
-  idVendedor!: number;
-  email!: string;
-  Senha!: string;
-  flagTipoUser!: number;
-  flagAtivo!: boolean;
+  user_id!: number;
+  username!: string;
+  role!: string;
+  exp!: number;
 }
