@@ -27,7 +27,7 @@ import { AcessorioService } from '../../../services/acessorio.service';
 })
 export class AcessorioslistComponent {
   lista: Acessorio[] = [];
-  acessorioEdit: Acessorio = new Acessorio(0, '');
+  acessorioEdit: Acessorio = new Acessorio('');
 
   @Input('esconderBotoes') esconderBotoes: boolean = false;
   @Output('retorno') retorno = new EventEmitter<any>();
@@ -105,7 +105,7 @@ export class AcessorioslistComponent {
   }
 
   new() {
-    this.acessorioEdit = new Acessorio(0, '');
+    this.acessorioEdit = new Acessorio('');
     this.modalRef = this.modalService.open(this.modalAcessorioDetalhe);
   }
 

@@ -2,8 +2,10 @@ export class Acessorio {
     id!:number;
     nome!:string;
 
-    constructor(id: number, nome: string){
-        this.id = id;
+    constructor(nome: string, id?: number){
         this.nome = nome;
+        if(id) {
+            this.id = id;
+        }
     }
 }

@@ -24,7 +24,7 @@ import { MarcaslistComponent } from '../../marcas/marcaslist/marcaslist.componen
   styleUrl: './acessoriosdetails.component.scss',
 })
 export class AcessoriosdetailsComponent {
-  @Input('acessorio') acessorio: Acessorio = new Acessorio(0, '');
+  @Input('acessorio') acessorio: Acessorio = new Acessorio('');
   @Output('retorno') retorno = new EventEmitter<any>();
   router = inject(ActivatedRoute);
   router2 = inject(Router);

@@ -40,7 +40,7 @@ export class MarcaslistComponent {
 
     if (marcaEditado != null) {
       let indice = this.lista.findIndex((x) => {
-        return x.idMarca == marcaEditado.id;
+        return x.id_marca == marcaEditado.id;
       });
       this.lista[indice] = marcaEditado;
     }
@@ -75,7 +75,7 @@ export class MarcaslistComponent {
       if (result.isConfirmed) {
 
 
-        this.marcaService.delete(marca.idMarca).subscribe({
+        this.marcaService.delete(marca.id_marca).subscribe({
           next: mensagem => { 
             Swal.fire({
               title: mensagem,
@@ -105,7 +105,7 @@ export class MarcaslistComponent {
   }
 
   edit(marca: Marca){
-    this.marcaEdit = Object.assign({}, marca);
+    this.marcaEdit = new Marca(marca.id_marca, marca.marca);
     this.modalRef = this.modalService.open(this.modalMarcaDetalhe);
   }
 
