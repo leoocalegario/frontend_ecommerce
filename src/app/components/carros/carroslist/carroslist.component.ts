@@ -41,7 +41,7 @@ export class CarroslistComponent {
 
     if (carroEditado != null) {
       let indice = this.lista.findIndex((x) => {
-        return x.idAnuncio == carroEditado.idAnuncio;
+        return x.id_anuncio == carroEditado.id_anuncio;
       });
       this.lista[indice] = carroEditado;
     }
@@ -49,6 +49,7 @@ export class CarroslistComponent {
 
   listAll() {
     this.carroService.listAll().subscribe({
+      
       next: (lista) => {
         this.lista = lista;
       },
@@ -60,6 +61,7 @@ export class CarroslistComponent {
         });
       },
     });
+    
   }
 
   deleteById(carro: Carro) {
@@ -72,7 +74,7 @@ export class CarroslistComponent {
       cancelButtonText: 'Não',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.carroService.delete(carro.idAnuncio).subscribe({
+        this.carroService.delete(carro.id_anuncio).subscribe({
           next: (mensagem) => {
             Swal.fire({
               title: mensagem,

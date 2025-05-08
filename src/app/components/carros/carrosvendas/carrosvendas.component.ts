@@ -36,7 +36,7 @@ export class CarrosvendasComponent {
 
     if (carroEditado != null) {
       let indice = this.lista.findIndex((x) => {
-        return x.idAnuncio == carroEditado.idAnuncio;
+        return x.id_anuncio == carroEditado.id_anuncio;
       });
       this.lista[indice] = carroEditado;
     }

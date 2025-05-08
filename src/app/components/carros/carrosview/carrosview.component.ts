@@ -28,7 +28,7 @@ export class CarrosviewComponent {
     if(id > 0){
       this.findById(id);
     }else{
-      if(this.carro.idAnuncio > 0)
+      if(this.carro.id_anuncio > 0)
         this.findById(id);
     }
   }

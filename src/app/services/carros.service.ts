@@ -23,6 +23,7 @@ export class CarroService {
   }
 
   save(carro: Carro): Observable<string>{
+    console.log(carro);
     return this.http.post<string>(this.API+"/save", carro, {responseType: 'text' as 'json'});
   }
 
