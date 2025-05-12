@@ -34,7 +34,6 @@ export class CarrosviewComponent {
   }
 
   findById(id: number){
-
     this.carroService.findById(id).subscribe({
       next: objeto => {
         this.carro = objeto;
@@ -46,21 +45,29 @@ export class CarrosviewComponent {
   }
 
   enviarProposta(){
-    console.log('Carro:', this.carro);
-    console.log('Proposta:', this.proposta);
+    if (!this.proposta.nomeCliente || !this.proposta.telefoneCliente || 
+        !this.proposta.emailCliente || !this.proposta.valorProposta) {
+      alert('Por favor, preencha todos os campos');
+      return;
+    }
+
+    if (!this.carro || !this.carro.id_anuncio) {
+      alert('Erro: Carro não encontrado');
+      return;
+    }
 
     this.proposta.anuncioveiculo = this.carro;
+    
     this.propostaService.save(this.proposta).subscribe({
       next: retorno => {
         alert('Proposta enviada com sucesso');
+        // Limpar o formulário após envio bem-sucedido
+        this.proposta = new Proposta();
       },
       error: erro => {
         console.error('Erro ao enviar proposta:', erro);
-        alert('Erro ao enviar proposta');
+        alert('Erro ao enviar proposta. Por favor, tente novamente.');
       }
     });
   }
-  
-
-  
 }
