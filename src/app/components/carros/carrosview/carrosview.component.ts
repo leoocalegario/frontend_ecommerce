@@ -45,8 +45,8 @@ export class CarrosviewComponent {
   }
 
   enviarProposta(){
-    if (!this.proposta.nomeCliente || !this.proposta.telefoneCliente || 
-        !this.proposta.emailCliente || !this.proposta.valorProposta) {
+    if (!this.proposta.nome_cliente || !this.proposta.telefone_cliente || 
+        !this.proposta.email_cliente || !this.proposta.valor_proposta) {
       alert('Por favor, preencha todos os campos');
       return;
     }
@@ -56,12 +56,19 @@ export class CarrosviewComponent {
       return;
     }
 
-    this.proposta.anuncioveiculo = this.carro;
+    this.proposta.anuncio_veiculo_id = this.carro.id_anuncio;
     
+    console.log('Dados da proposta a serem enviados:', {
+      valor_proposta: this.proposta.valor_proposta,
+      nome_cliente: this.proposta.nome_cliente,
+      telefone_cliente: this.proposta.telefone_cliente,
+      email_cliente: this.proposta.email_cliente,
+      anuncio_veiculo_id: this.proposta.anuncio_veiculo_id
+    });
+
     this.propostaService.save(this.proposta).subscribe({
       next: retorno => {
         alert('Proposta enviada com sucesso');
-        // Limpar o formulário após envio bem-sucedido
         this.proposta = new Proposta();
       },
       error: erro => {

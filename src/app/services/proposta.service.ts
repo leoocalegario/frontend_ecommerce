@@ -18,14 +18,7 @@ export class PropostaService {
   }
 
   save(proposta: Proposta): Observable<string> {
-    const propostaToSend = {
-      valor_proposta: proposta.valorProposta,
-      nome_cliente: proposta.nomeCliente,
-      telefone_cliente: proposta.telefoneCliente,
-      email_cliente: proposta.emailCliente,
-      anuncio_veiculo_id: proposta.anuncioveiculo.id_anuncio
-    };
-    return this.http.post<string>(this.API + "/save", propostaToSend, { responseType: 'text' as 'json' });
+    return this.http.post<string>(this.API + "/save", proposta, { responseType: 'text' as 'json' });
   }
 
   findById(id: number): Observable<Proposta>{
