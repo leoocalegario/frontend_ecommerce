@@ -4,11 +4,12 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { PropostaService } from '../../../services/proposta.service';
 import Swal from 'sweetalert2';
 import { Proposta } from '../../../models/proposta';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-propostadetails',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './propostadetails.component.html',
   styleUrl: './propostadetails.component.scss'
 })
@@ -28,27 +29,22 @@ export class PropostadetailsComponent {
     let id = this.router.snapshot.params['id'];
     if(id > 0){
       this.findById(id);
-    }else{
-      if(this.proposta.idProposta > 0)
-        this.findById(id);
+    }
   }
-}
 
   findById(id: number){
-      
-      this.propostaService.findById(id).subscribe({
-        next: retorno => {
-          this.proposta = retorno;
-        },
-        error: erro => {
-          Swal.fire({
-            title: 'Ocorreu um erro',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-        }
-      });
-  
-    }
+    this.propostaService.findById(id).subscribe({
+      next: retorno => {
+        this.proposta = retorno;
+      },
+      error: erro => {
+        Swal.fire({
+          title: 'Ocorreu um erro',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    });
+  }
 }
 

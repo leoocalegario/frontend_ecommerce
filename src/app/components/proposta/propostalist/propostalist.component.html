@@ -14,13 +14,23 @@
               <tr>
                 <th>Id</th>
                 <th>Modelo</th>
+                <th>Valor do Veiculo</th>
+                <th>Valor Ofertado</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
               </tr>
             </thead>
             <tbody>
               @for (proposta of lista; track $index) {
-              <tr style="cursor:pointer" (click)="viewById(proposta)">
-                <td>{{ proposta.idProposta }}</td>
-                <td>{{ proposta.anuncioveiculo.modelo }}</td>
+              <tr>
+                <td>{{ proposta.id_proposta }}</td>
+                <td>{{ proposta.anuncioveiculo.modelo || 'Carregando...' }}</td>
+                <td>{{ proposta.anuncioveiculo.valorcarro }}</td>
+                <td>{{ proposta.valor_proposta }}</td>
+                <td>{{ proposta.nome_cliente }}</td>
+                <td>{{ proposta.email_cliente }}</td>
+                <td>{{ proposta.telefone_cliente }}</td>
               </tr>
               }
             </tbody>
@@ -32,15 +42,3 @@
 </div>
 
 
-
-<ng-template #modalPropostaView>
-  <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Proposta</h5>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
-  </div>
-  <div class="modal-body">
-
-    <app-propostadetails (retorno)="retornoDetalhe($event)"></app-propostadetails>
-  </div>
-
-</ng-template>
