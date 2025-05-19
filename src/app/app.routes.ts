@@ -14,6 +14,7 @@ import { CarrosvendasComponent } from './components/carros/carrosvendas/carrosve
 import { loginGuard } from './auth/login.guard';
 import { PropostalistComponent } from './components/proposta/propostalist/propostalist.component';
 import { PropostadetailsComponent } from './components/proposta/propostadetails/propostadetails.component';
+import { UserslistComponent } from './components/users/userslist/userslist.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,7 +45,8 @@ export const routes: Routes = [
       { path: 'acessorios/new', component: AcessoriosdetailsComponent },
       { path: 'acessorios/edit/:id', component: AcessoriosdetailsComponent },
       { path: 'propostas', component: PropostalistComponent},
-      { path: 'propostas/view', component: PropostadetailsComponent}
+      { path: 'propostas/view', component: PropostadetailsComponent},
+      { path: 'users', component: UserslistComponent}
     ],
   },
 ];

@@ -29,6 +29,11 @@
         <li class="nav-item">
           <a class="nav-link active" href="contato">Contato</a>
         </li>
+        @if(loginService.hasPermission('admin')){
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/users">Usuários</a>
+        </li>
+        }
 
         }
 
