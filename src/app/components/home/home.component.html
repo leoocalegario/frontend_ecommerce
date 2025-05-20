@@ -1,68 +1,4 @@
-<div class="banner-pai">
-  <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
-    <mdb-carousel-item>
-      <img src="assets/img/imagem-banner1.jpg" class="d-block w-100" alt="img-1"
-        style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Jetta GLI</h5>
-        <p>Potência (kW)/Pôtencia (cv)<br>
-          169 kW/230 cv<br>
-          Aceleração 0 - 100 km/h <br>
-          6,8<br>
-          Velocidade Máxima<br>
-          250 km/h
-        </p>
-      </div>
-    </mdb-carousel-item>
-    <mdb-carousel-item>
-      <img src="assets/img/imagem-banner2.jpg" class="d-block w-100" alt="img-2"
-        style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Porsche 911 Gt3 Rs</h5>
-        <p>Potência (kW)/Pôtencia (cv)<br>
-          386 kW/525 cv<br>
-          Aceleração 0 - 100 km/h <br>
-          3,2<br>
-          Velocidade Máxima<br>
-          296 km/h
-        </p>
-      </div>
-    </mdb-carousel-item>
-    <mdb-carousel-item>
-      <img src="assets/img/imagem-banner3.jpg" class="d-block w-100" alt="img-3"
-        style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Lamborghini Huracán Tecnica</h5>
-        <p>
-          Potencia (kW) / Potencia (cv) <br>
-          470 kW/ 640 cv<br>
-          Aceleração 0 - 100 km/h<br>
-          3,2<br>
-          Velocidade Máxima<br>
-          325 km/h<p>
-
-      </div>
-    </mdb-carousel-item>
-  </mdb-carousel>
-</div>
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barra de Pesquisa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-    </style>
-
-</head>
-
-<body>
+<div class="container">
   <div class="search-container">
     <div class="search-tabs">
       <div class="active">Comprar carros</div>
@@ -74,11 +10,8 @@
       <button (click)="pesquisar()">Pesquisar</button>
     </div>
   </div>
-</body>
 
-</html>
-
-<div id="cards" class="row justify-content-center g-4">
+  <div id="cards" class="row justify-content-center g-4">
     @for (carro of lista; track $index) {
       <div routerLink="/carros/view/{{carro.id_anuncio}}" class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
         <div class="card w-80 h-80 m-2">
@@ -101,47 +34,34 @@
       </div>
     }
   </div>
-  
+</div>
 
-
-  <footer class="bg-light text-center text-lg-start">
-    <div class="container p-4">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Informações Úteis</h5>
-          <br>
-          <p>
-            📍 Av. das Cataratas, 1118 - Vila Yolanda, Foz do Iguaçu - PR, 85853-000<br>
-            📞 (45) 3528-7997<br>
-            🕗 Horário de atendimento:<br>
+<footer style="background: transparent; box-shadow: none; border: none;">
+  <div class="container p-4" style="background: transparent; box-shadow: none; border: none;">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Informações Úteis</h5>
+        <br>
+        <p>
+          📍 Av. das Cataratas, 1118 - Vila Yolanda, Foz do Iguaçu - PR, 85853-000<br>
+          📞 (45) 3528-7997<br>
+          🕗 Horário de atendimento:<br>
           Seg. à Sexta 08:00 - 18:00, Sábado 08:00 - 12:00.
-          </p>
-        </div>
-        <!--Grid column-->
-  
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Empresa</h5>
-  
-          <p>
-            <br>
-            A Wave Motors é referência em vendas de veículos de alta qualidade, oferecendo uma ampla variedade de carros para todas as necessidades e preferências. Com um atendimento personalizado e uma equipe de especialistas, garantimos uma experiência de compra agradável e confiável. Descubra por que somos líderes no mercado automobilístico e sinta a diferença da excelência.
-
-          
         </p>
       </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2024 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">Wavemotors</a>
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Empresa</h5>
+        <p>
+          <br>
+          A Wave Motors é referência em vendas de veículos de alta qualidade, oferecendo uma ampla variedade de carros para todas as necessidades e preferências. Com um atendimento personalizado e uma equipe de especialistas, garantimos uma experiência de compra agradável e confiável. Descubra por que somos líderes no mercado automobilístico e sinta a diferença da excelência.
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Copyright -->
+
+  <div class="text-center p-3" style="background: transparent; color: #fff;">
+    © 2024 Copyright:
+    <a class="text-light" href="https://mdbootstrap.com/">Wavemotors</a>
+  </div>
 </footer>
