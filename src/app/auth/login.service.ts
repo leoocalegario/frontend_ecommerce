@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { Login } from './login';
+import { Register } from './register';
 import { Usuario } from './usuario';
 import { environment } from '../../environments/environment';
 
@@ -13,13 +14,16 @@ export class LoginService {
 
   http = inject(HttpClient);
   API = environment.SERVIDOR+"/api/login";
-
+  REGISTER_API = environment.SERVIDOR+"/api/register";
 
   constructor() { }
 
-
   logar(login: Login): Observable<string> {
     return this.http.post<string>(this.API, login, {responseType: 'text' as 'json'});
+  }
+
+  registrar(register: Register): Observable<any> {
+    return this.http.post(this.REGISTER_API, register);
   }
 
   addToken(token: string) {

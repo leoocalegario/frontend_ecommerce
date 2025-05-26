@@ -5,13 +5,14 @@ import { PropostaService } from '../../../services/proposta.service';
 import { PropostadetailsComponent } from "../propostadetails/propostadetails.component";
 import { RouterLink } from '@angular/router';
 import { CarroService } from '../../../services/carros.service';
+import { CurrencyPipe } from '../../../pipes/currency.pipe';
 
 @Component({
     selector: 'app-propostalist',
     standalone: true,
     templateUrl: './propostalist.component.html',
     styleUrl: './propostalist.component.scss',
-    imports: [PropostadetailsComponent,MdbModalModule,RouterLink]
+    imports: [PropostadetailsComponent,MdbModalModule,RouterLink,CurrencyPipe]
 })
 export class PropostalistComponent {
 

@@ -7,11 +7,12 @@ import { CarroService } from '../../services/carros.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { CurrencyPipe } from '../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MdbCarouselModule, MdbFormsModule, FormsModule, RouterLink, CommonModule],
+  imports: [MdbCarouselModule, MdbFormsModule, FormsModule, RouterLink, CommonModule, CurrencyPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

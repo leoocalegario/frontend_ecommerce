@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-3 d-flex justify-content-center" id="vendas">
       <div class="col">
-        <h3 class="text-center"> R$ {{carro.valorcarro}},00 </h3>
+        <h3 class="text-center">{{carro.valorcarro | currency}}</h3>
         <form (ngSubmit)="enviarProposta()">
           <mdb-form-control>
             <input mdbInput type="text" id="nome_cliente" [(ngModel)]="proposta.nome_cliente" name="nome_cliente" class="form-control" />
@@ -50,7 +50,7 @@
     </div>
   </div>
   <div id="acessorio">
-    <h4> // Lista de Acessorios:</h4>
+    <h4>Lista de Acessorios:</h4>
     @for (acessorios of carro.acessorios; track $index) {
     <h6>- {{acessorios.nome}}</h6>
     }

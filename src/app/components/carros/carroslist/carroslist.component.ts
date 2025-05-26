@@ -10,11 +10,12 @@ import {
 import { CarrosdetailsComponent } from '../carrosdetails/carrosdetails.component';
 import { Marca } from '../../../models/marca';
 import { CarroService } from '../../../services/carros.service';
+import { CurrencyPipe } from '../../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-carroslist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent],
+  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent, CurrencyPipe],
   templateUrl: './carroslist.component.html',
   styleUrl: './carroslist.component.scss',
 })

@@ -5,11 +5,12 @@ import { PropostaService } from '../../../services/proposta.service';
 import Swal from 'sweetalert2';
 import { Proposta } from '../../../models/proposta';
 import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '../../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-propostadetails',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CurrencyPipe],
   templateUrl: './propostadetails.component.html',
   styleUrl: './propostadetails.component.scss'
 })

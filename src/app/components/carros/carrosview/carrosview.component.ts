@@ -6,11 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { PropostaService } from '../../../services/proposta.service';
 import { Proposta } from '../../../models/proposta';
+import { CurrencyPipe } from '../../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-carrosview',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule],
+  imports: [MdbFormsModule, FormsModule, CurrencyPipe],
   templateUrl: './carrosview.component.html',
   styleUrl: './carrosview.component.scss'
 })

@@ -21,7 +21,7 @@
         <li class="nav-item">
           <a class="nav-link active" href="vendas"><i class="fas fa-tags"></i> SEMINOVOS</a>
         </li>
-        @if(loginService.getToken() != null ){
+        @if(loginService.getToken() != null && loginService.hasPermission('admin')){
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="admin/carros"><i class="fas fa-car"></i> VEÍCULOS</a>
         </li>
@@ -34,11 +34,9 @@
         <li class="nav-item">
           <a class="nav-link active" href="admin/propostas"><i class="fas fa-file-invoice-dollar"></i> PROPOSTAS</a>
         </li>
-        @if(loginService.hasPermission('admin')){
         <li class="nav-item">
           <a class="nav-link active" href="admin/users"><i class="fas fa-users"></i> USUÁRIOS</a>
         </li>
-        }
         }
       </ul>
       @if(loginService.getToken() == null ){

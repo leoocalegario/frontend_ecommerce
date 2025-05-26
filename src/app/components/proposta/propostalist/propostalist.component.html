@@ -26,8 +26,8 @@
               <tr>
                 <td>{{ proposta.id_proposta }}</td>
                 <td>{{ proposta.anuncioveiculo.modelo || 'Carregando...' }}</td>
-                <td>{{ proposta.anuncioveiculo.valorcarro }}</td>
-                <td>{{ proposta.valor_proposta }}</td>
+                <td>{{ proposta.anuncioveiculo.valorcarro | currency }}</td>
+                <td>{{ proposta.valor_proposta | currency }}</td>
                 <td>{{ proposta.nome_cliente }}</td>
                 <td>{{ proposta.email_cliente }}</td>
                 <td>{{ proposta.telefone_cliente }}</td>

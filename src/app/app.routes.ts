@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PrincipalComponent } from './components/layout/principal/principal.component';
 import { LoginComponent } from './components/layout/login/login.component';
+import { RegisterComponent } from './components/layout/register/register.component';
 import { CarroslistComponent } from './components/carros/carroslist/carroslist.component';
 import { CarrosdetailsComponent } from './components/carros/carrosdetails/carrosdetails.component';
 import { MarcaslistComponent } from './components/marcas/marcaslist/marcaslist.component';
@@ -19,6 +20,7 @@ import { UserslistComponent } from './components/users/userslist/userslist.compo
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: '',
     component: PrincipalComponent,
