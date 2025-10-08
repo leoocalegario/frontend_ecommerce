@@ -16,11 +16,13 @@ import { loginGuard } from './auth/login.guard';
 import { PropostalistComponent } from './components/proposta/propostalist/propostalist.component';
 import { PropostadetailsComponent } from './components/proposta/propostadetails/propostadetails.component';
 import { UserslistComponent } from './components/users/userslist/userslist.component';
+import { TestMockComponent } from './components/test-mock/test-mock.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'test-mock', component: TestMockComponent },
   {
     path: '',
     component: PrincipalComponent,

@@ -1,14 +1,19 @@
 <div class="container">
+  <!-- Debug info -->
+  <div class="alert alert-info" *ngIf="!carro.id_anuncio">
+    <strong>Debug:</strong> Carregando dados do carro... ID: {{router.snapshot.params['id']}}
+  </div>
+  
   <div class="row" id="top">
     <div class="col-md-3 justify-content-center">
       @if(carro.imagem){
-      <img src="{{carro.imagem}}" class="img-thumbnail" />
+      <img src="{{carro.imagem}}" class="img-thumbnail" style="max-width: 100%; height: auto;" />
       }@else{
-      nenhuma imagem cadastrada para este anúncio
+      <div class="alert alert-warning">nenhuma imagem cadastrada para este anúncio</div>
       }
     </div>
     <div class="col-md-6 text-center">
-      <h2> {{carro.veiculosmarca.marca}} {{carro.modelo}} </h2> <br>
+      <h2> {{carro.veiculosmarca?.marca}} {{carro.modelo}} </h2> <br>
 
       <h4>Detalhes do Veiculo:</h4>
 

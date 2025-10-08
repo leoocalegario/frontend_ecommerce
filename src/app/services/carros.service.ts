@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Carro } from '../models/carro';
-import { Observable } from 'rxjs';
+import { Observable, of, catchError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { getCarrosDetalhados, getCarroDetalhadoById, searchCarrosDetalhados } from '../mock-data/carros-detalhados-mock';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,12 @@ export class CarroService {
   constructor() { }
 
   listAll(): Observable<Carro[]> {
-    return this.http.get<Carro[]>(this.API+"/findAll");
+    return this.http.get<Carro[]>(this.API+"/findAll").pipe(
+      catchError(() => {
+        console.log('Backend não disponível, usando dados mock');
+        return of(getCarrosDetalhados());
+      })
+    );
   }
 
   delete( id: number): Observable<string>{
@@ -32,10 +38,21 @@ export class CarroService {
   }
 
   findById(id:number): Observable<Carro>{
-    return this.http.get<Carro>(this.API+"/findById/"+id);
+    return this.http.get<Carro>(this.API+"/findById/"+id).pipe(
+      catchError(() => {
+        console.log('Backend não disponível, usando dados mock');
+        const carro = getCarroDetalhadoById(id);
+        return carro ? of(carro) : of(new Carro());
+      })
+    );
   }
 
   findByModeloLike(pesquisa:string): Observable<Carro[]>{
-    return this.http.get<Carro[]>(this.API+"/findByModeloLike?modelo="+pesquisa );
+    return this.http.get<Carro[]>(this.API+"/findByModeloLike?modelo="+pesquisa).pipe(
+      catchError(() => {
+        console.log('Backend não disponível, usando dados mock');
+        return of(searchCarrosDetalhados(pesquisa));
+      })
+    );
   }
 }
