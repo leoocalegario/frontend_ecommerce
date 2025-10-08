@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Acessorio } from '../models/acessorio';
-import { Observable } from 'rxjs';
+import { Observable, of, catchError } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { getAcessoriosCatalogo } from '../mock-data/propostas-acessorios-marcas-mock';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class AcessorioService {
   constructor() { }
 
   listAll(): Observable<Acessorio[]>{
-    return this.http.get<Acessorio[]>(this.API+"/listAll");
+    return this.http.get<Acessorio[]>(this.API+"/listAll").pipe(
+      catchError(() => of(getAcessoriosCatalogo()))
+    );
   }
 
   delete(id: number): Observable<string>{
@@ -32,7 +35,9 @@ export class AcessorioService {
   }
 
   findById(id: number): Observable<Acessorio>{
-    return this.http.get<Acessorio>(this.API+"/findById/"+id);
+    return this.http.get<Acessorio>(this.API+"/findById/"+id).pipe(
+      catchError(() => of(getAcessoriosCatalogo().find(a => a.id === id) as Acessorio))
+    );
   }
 
 }

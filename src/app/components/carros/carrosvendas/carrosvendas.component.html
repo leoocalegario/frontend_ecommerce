@@ -1,21 +1,29 @@
-        <div class="row justify-content-center">
-        @for(carro of lista; track $index){
-        <div routerLink="/carros/view/{{carro.id_anuncio}}" class="card--">
-          <div class="bg-image hover-overlay " mdbRipple rippleColor="light">
-
-            <!-- Adicionar carrossel dentro do card -->
-            @if(carro.imagem){
-              <img [src]="carro.imagem" class="card-img-top" alt="Skyscrapers"/>
-            }@else{
-              não há imagem
-            }
-            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{carro.modelo}}</h5>
-            <p class="card-text">Ano de fabricação: {{carro.ano}} <br>Pintura: {{carro.cor}} </p>
-            
+<div class="container mt-4">
+  <h2>Seminovos</h2>
+  <div class="row">
+    @for(carro of lista; track $index){
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card">
+        <img [src]="carro.imagem" class="card-img-top" [alt]="carro.modelo" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{carro.veiculosmarca?.marca}} {{carro.modelo}}</h5>
+          <p class="card-text">
+            <strong>Ano:</strong> {{carro.ano}}<br>
+            <strong>Cor:</strong> {{carro.cor}}<br>
+            <strong>KM:</strong> {{carro.km | number}}<br>
+            <strong>Combustível:</strong> {{carro.combustivel}}<br>
+            <strong>Placa:</strong> {{carro.placacarro}}
+          </p>
+          <div class="card-footer">
+            <strong class="text-success">R$ {{carro.valorcarro | number:'1.2-2'}}</strong>
+            <br><br>
+            <a routerLink="/carros/view/{{carro.id_anuncio}}" class="btn btn-primary btn-sm">
+              Ver Detalhes
+            </a>
           </div>
         </div>
+      </div>
+    </div>
     }
+  </div>
 </div>

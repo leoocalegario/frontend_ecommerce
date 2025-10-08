@@ -1,15 +1,17 @@
 import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CarrosdetailsComponent } from '../carrosdetails/carrosdetails.component';
 import Swal from 'sweetalert2';
 import { Carro } from '../../../models/carro';
 import { CarroService } from '../../../services/carros.service';
+import { getCarrosDetalhados } from '../../../mock-data/carros-detalhados-mock';
 
 @Component({
   selector: 'app-carrosvendas',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent],
+  imports: [CommonModule, RouterLink, MdbModalModule, CarrosdetailsComponent],
   templateUrl: './carrosvendas.component.html',
   styleUrl: './carrosvendas.component.scss'
 })
@@ -46,13 +48,13 @@ export class CarrosvendasComponent {
     this.carroService.listAll().subscribe({
       next: (lista) => {
         this.lista = lista;
+        console.log('Dados carregados na aba Seminovos:', this.lista);
       },
       error: (erro) => {
-        Swal.fire({
-          title: 'Ocorreu um erro',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        console.log('Erro ao carregar dados, usando mock:', erro);
+        // Força o carregamento dos dados mock
+        this.lista = getCarrosDetalhados();
+        console.log('Dados mock carregados na aba Seminovos:', this.lista);
       },
     });
   }

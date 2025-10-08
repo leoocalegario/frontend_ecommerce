@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Carro } from '../../../models/carro';
 import { CarroService } from '../../../services/carros.service';
@@ -8,11 +9,12 @@ import { PropostaService } from '../../../services/proposta.service';
 import { Proposta } from '../../../models/proposta';
 import { CurrencyPipe } from '../../../pipes/currency.pipe';
 import { getCarroDetalhadoById } from '../../../mock-data/carros-detalhados-mock';
+import { EmailService } from '../../../services/email.service';
 
 @Component({
   selector: 'app-carrosview',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, CurrencyPipe],
+  imports: [CommonModule, MdbFormsModule, FormsModule, CurrencyPipe],
   templateUrl: './carrosview.component.html',
   styleUrl: './carrosview.component.scss'
 })
@@ -21,6 +23,7 @@ export class CarrosviewComponent {
   router = inject(ActivatedRoute);
   carroService = inject(CarroService);
   propostaService = inject(PropostaService);
+  emailService = inject(EmailService);
 
   carro: Carro = new Carro();
   proposta: Proposta = new Proposta();
@@ -78,22 +81,26 @@ export class CarrosviewComponent {
 
     this.proposta.anuncio_veiculo_id = this.carro.id_anuncio;
     
-    console.log('Dados da proposta a serem enviados:', {
-      valor_proposta: this.proposta.valor_proposta,
-      nome_cliente: this.proposta.nome_cliente,
-      telefone_cliente: this.proposta.telefone_cliente,
-      email_cliente: this.proposta.email_cliente,
-      anuncio_veiculo_id: this.proposta.anuncio_veiculo_id
-    });
-
-    this.propostaService.save(this.proposta).subscribe({
+    // Enviar email com os dados da proposta
+    this.emailService.enviarProposta(this.proposta).subscribe({
       next: retorno => {
-        alert('Proposta enviada com sucesso');
-        this.proposta = new Proposta();
+        console.log('Email enviado:', retorno);
+        
+        // Salvar a proposta no sistema
+        this.propostaService.save(this.proposta).subscribe({
+          next: retornoProposta => {
+            alert('Proposta enviada com sucesso! Você receberá um email de confirmação em arineto10@hotmail.com');
+            this.proposta = new Proposta();
+          },
+          error: erro => {
+            console.error('Erro ao salvar proposta:', erro);
+            alert('Proposta enviada por email, mas houve erro ao salvar no sistema.');
+          }
+        });
       },
       error: erro => {
-        console.error('Erro ao enviar proposta:', erro);
-        alert('Erro ao enviar proposta. Por favor, tente novamente.');
+        console.error('Erro ao enviar email:', erro);
+        alert('Erro ao enviar proposta por email. Por favor, tente novamente.');
       }
     });
   }
