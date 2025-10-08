@@ -2,7 +2,7 @@ import { Acessorio } from "./acessorio";
 import { Marca } from "./marca";
 
 export class Carro {
-    idAnuncio!: number;
+    id_anuncio!: number;
     modelo!: string;
     ano!: number;
     cor!: string;
@@ -11,6 +11,7 @@ export class Carro {
     imagem!: string;
     km!: number;
     placacarro!: string;
+    user_id!: number;
     veiculosmarca!: Marca;
     acessorios: Acessorio[] =[];
 

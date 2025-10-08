@@ -1,47 +1,12 @@
 <div class="banner-pai">
   <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
     <mdb-carousel-item>
-      <img src="assets/img/imagem-banner1.jpg" class="d-block w-100" alt="img-1"
+      <img src="assets/img/banner2.jpg" class="d-block w-100" alt="img-1"
         style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Jetta GLI</h5>
-        <p>Potência (kW)/Pôtencia (cv)<br>
-          169 kW/230 cv<br>
-          Aceleração 0 - 100 km/h <br>
-          6,8<br>
-          Velocidade Máxima<br>
-          250 km/h
-        </p>
-      </div>
     </mdb-carousel-item>
     <mdb-carousel-item>
-      <img src="assets/img/imagem-banner2.jpg" class="d-block w-100" alt="img-2"
+      <img src="assets/img/banner1.jpg" class="d-block w-100" alt="img-1"
         style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Porsche 911 Gt3 Rs</h5>
-        <p>Potência (kW)/Pôtencia (cv)<br>
-          386 kW/525 cv<br>
-          Aceleração 0 - 100 km/h <br>
-          3,2<br>
-          Velocidade Máxima<br>
-          296 km/h
-        </p>
-      </div>
-    </mdb-carousel-item>
-    <mdb-carousel-item>
-      <img src="assets/img/imagem-banner3.jpg" class="d-block w-100" alt="img-3"
-        style="width: 1920px; height: 600px; object-fit: cover;" />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Lamborghini Huracán Tecnica</h5>
-        <p>
-          Potencia (kW) / Potencia (cv) <br>
-          470 kW/ 640 cv<br>
-          Aceleração 0 - 100 km/h<br>
-          3,2<br>
-          Velocidade Máxima<br>
-          325 km/h<p>
-
-      </div>
     </mdb-carousel-item>
   </mdb-carousel>
 </div>
@@ -68,10 +33,11 @@
       <div class="active">Comprar carros</div>
     </div>
     <div class="search-input">
-      <input [(ngModel)]="pesquisa" type="text" placeholder="Digite marca ou modelo do carro">
-    </div>
-    <div class="search-button">
-      <button (click)="pesquisar()">Pesquisar</button>
+      <input [(ngModel)]="pesquisa" 
+             (input)="pesquisar()" 
+             type="text" 
+             placeholder="Digite marca ou modelo do carro"
+             class="form-control">
     </div>
   </div>
 </body>
@@ -80,7 +46,7 @@
 
 <div id="cards" class="row justify-content-center g-4">
     @for (carro of lista; track $index) {
-      <div routerLink="/carros/view/{{carro.idAnuncio}}" class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+      <div routerLink="/carros/view/{{carro.id_anuncio}}" class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
         <div class="card w-80 h-80 m-2">
           @if(carro.imagem){
           <img [src]="carro.imagem" class="card-img-top" alt="Skyscrapers"/>
@@ -95,7 +61,7 @@
               <h6>Tipo de Combustivel</h6>{{carro.combustivel}}<br>
           </div>
           <div class="card-footer">
-            <small class="text-muted">R${{carro.valorcarro}},00</small>
+            <small class="text-muted">{{carro.valorcarro | currency}}</small>
           </div>
         </div>
       </div>

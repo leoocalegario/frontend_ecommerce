@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PrincipalComponent } from './components/layout/principal/principal.component';
 import { LoginComponent } from './components/layout/login/login.component';
+import { RegisterComponent } from './components/layout/register/register.component';
 import { CarroslistComponent } from './components/carros/carroslist/carroslist.component';
 import { CarrosdetailsComponent } from './components/carros/carrosdetails/carrosdetails.component';
 import { MarcaslistComponent } from './components/marcas/marcaslist/marcaslist.component';
@@ -14,10 +15,11 @@ import { CarrosvendasComponent } from './components/carros/carrosvendas/carrosve
 import { loginGuard } from './auth/login.guard';
 import { PropostalistComponent } from './components/proposta/propostalist/propostalist.component';
 import { PropostadetailsComponent } from './components/proposta/propostadetails/propostadetails.component';
-
+import { UserslistComponent } from './components/users/userslist/userslist.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: '',
     component: PrincipalComponent,
@@ -44,7 +46,8 @@ export const routes: Routes = [
       { path: 'acessorios/new', component: AcessoriosdetailsComponent },
       { path: 'acessorios/edit/:id', component: AcessoriosdetailsComponent },
       { path: 'propostas', component: PropostalistComponent},
-      { path: 'propostas/view', component: PropostadetailsComponent}
+      { path: 'propostas/view', component: PropostadetailsComponent},
+      { path: 'users', component: UserslistComponent}
     ],
   },
 ];

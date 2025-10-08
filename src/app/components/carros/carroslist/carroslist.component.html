@@ -30,7 +30,7 @@
             <tbody>
               @for (carro of lista; track $index) {
               <tr>
-                <td>{{ carro.idAnuncio }}</td>
+                <td>{{ carro.id_anuncio }}</td>
                 <td>{{ carro.modelo }}</td>
                 @if(carro.veiculosmarca){
                   <td>{{ carro.veiculosmarca.marca }}</td>
@@ -39,7 +39,7 @@
               }
                 <td>{{carro.cor}}</td>
                 <td>{{carro.ano}}</td>
-                <td>{{carro.valorcarro}}</td>
+                <td>{{carro.valorcarro | currency}}</td>
                 <td>{{carro.km}}</td>
                 <td>{{carro.combustivel}}</td>
                 <td class="direita justify-content-center">

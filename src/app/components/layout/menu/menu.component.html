@@ -12,48 +12,42 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        @if(loginService.getToken() != null ){
-
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="admin/carros">Veiculos</a>
+          <a class="nav-link active" href="/home"><i class="fas fa-home"></i> HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="admin/marcas">Marcas</a>
+          <a class="nav-link active" href="contato"><i class="fas fa-info-circle"></i> SOBRE NÓS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="admin/acessorios">Acessórios</a>
+          <a class="nav-link active" href="vendas"><i class="fas fa-tags"></i> SEMINOVOS</a>
+        </li>
+        @if(loginService.getToken() != null && loginService.hasPermission('admin')){
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="admin/carros"><i class="fas fa-car"></i> VEÍCULOS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="admin/propostas">Propostas</a>
+          <a class="nav-link active" href="admin/marcas"><i class="fas fa-trademark"></i> MARCAS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="contato">Contato</a>
+          <a class="nav-link active" href="admin/acessorios"><i class="fas fa-tools"></i> ACESSÓRIOS</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/propostas"><i class="fas fa-file-invoice-dollar"></i> PROPOSTAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="admin/users"><i class="fas fa-users"></i> USUÁRIOS</a>
+        </li>
         }
-
-        <li class="nav-item">
-          <a class="nav-link active" href="vendas">Anuncios</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link active" href="contato">Contato</a>
-        </li>
-        
-
-
-
-        <div class="d-flex align-items-center"></div>
       </ul>
       @if(loginService.getToken() == null ){
       <button type="button" class="btn btn-primary" style="background-color: #ec1b2a; box-shadow: none"
         routerLink="/login">
-        Login
+        <i class="fas fa-sign-in-alt"></i> Entrar
       </button>
       }@else {
-      <button type="button" class="btn btn-primary" style="background-color: #1b4cec; box-shadow: none"
+      <button type="button" class="btn btn-primary"
         (click)="loginService.removerToken(); reload()">
-        Logout
+        <i class="fas fa-sign-out-alt"></i> Sair
       </button>
       }
     </div>

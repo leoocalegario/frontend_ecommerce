@@ -37,13 +37,13 @@ export class CarrosdetailsComponent {
     if(id > 0){
       this.findById(id);
     }else{
-      if(this.carro.idAnuncio > 0)
+      if(this.carro.id_anuncio > 0)
         this.findById(id);
     }
   }
 
   findById(id: number){
-
+    
     this.carroService.findById(id).subscribe({
       next: retorno => {
         this.carro = retorno;
@@ -60,11 +60,11 @@ export class CarrosdetailsComponent {
   }
 
   save(){
-    if(this.carro.idAnuncio > 0){
-
+    if(this.carro.id_anuncio > 0){
+      
       //console.log(this.carro);
 
-      this.carroService.update(this.carro, this.carro.idAnuncio).subscribe({
+      this.carroService.update(this.carro, this.carro.id_anuncio).subscribe({
         next: mensagem => {
           Swal.fire({
             title: mensagem,
@@ -83,15 +83,18 @@ export class CarrosdetailsComponent {
         }
       });
 
-    }else{
-
-      //GAMBIARRA TEM Q VIRAR INPUT NO DETAILSS...
-      /*this.carro.combustivel = 'fadsjf';
-      this.carro.cor =  'asdf';
-      this.carro.placacarro = "sfasd";
-      this.carro.valorcarro = 5;*/
-
+    }else{  
+      
+      // Extract user ID from localStorage
+      const userData = JSON.parse(localStorage.getItem('token') || '{}');
+      if (userData && userData.user && userData.user.id) {
+        this.carro.user_id = userData.user.id;
+      }
+      
+      console.log("aqui",userData);
+      console.log("carro",this.carro);
       this.carroService.save(this.carro).subscribe({
+        
         next: mensagem => {
           Swal.fire({
             title: mensagem,
